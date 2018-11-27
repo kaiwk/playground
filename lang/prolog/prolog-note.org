@@ -1,0 +1,9 @@
+* Programming in prolog
+** Chapter1
+1. Asserting /facts/ and /objects/.
+2. Asking questions about the facts.
+3. Using variables and what their scopes are.
+4. /Conjunctions/ as a way of saying 'and'.
+5. Representing relationships in the form of rules.
+6. An introduction to backtracking.
+** Chapter2

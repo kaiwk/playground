@@ -1,0 +1,30 @@
+(define dx .0000001)
+(define (fix-point f start)
+  (define tolerance 0.00001)
+  (define (close-enough? u v)
+    (< (abs (- u v)) tolerance))
+  (define (iter old new)
+    (if (close-enough? old new)
+      new
+      (iter new (f new))
+      )
+    )
+  (iter start (f start))
+  )
+(define deriv
+  (lambda (f)
+    (lambda (x)
+      (/ (- (f (+ x dx))
+            (f x))
+         dx)))
+  )
+(define (newton f guess)
+  (define df (deriv f))
+  (fix-point
+    (lambda (x) (- x (/ (f x) (df x))))
+    guess
+    ))
+(define (sqr x)
+  (newton (lambda (y) (- x (* y y)))
+          1
+          ))

@@ -1,0 +1,51 @@
+#+TITLE:     Genetic Algorithm
+#+AUTHOR:    Kermit
+#+EMAIL:     kermitwk@gmail.com
+#+OPTIONS:   toc:nil
+
+* Introduction
+
+** Description
+
+把城市路径作为所谓的“基因”，从样本中的最优路径中提取部分路径片段作为所谓的“遗传信息”
+不断从样本中最优的路径生成新的总体，如此往复
+
+** Variable
+
+- poplulation_size: 每代个体数量
+- mutation_probability: 突变几率
+- generations: 迭代的次数
+- sample_size: 样本数量，即参与繁衍的个体数量
+
+** Class
+
+*** City
+
+城市类，存储城市位置，编号
+
+*** Route
+
+路线类，存储一个城市列表，该列表的顺序代表 *路径*
+
+*** RoutePopulation
+
+一个路径的集合，用来表示算法中一代的所有路径
+
+*** GeneticAlgorithm
+
+遗传算法实现，主要方法
+- generation_select:
+  从一代中选出最好的路径
+  过程：首先从总体中随机一些个体，作为样本，再从样本中选取最好的的路径
+- crossover
+  交换遗传信息
+  交换过程：使用随机函数，截取父代的信息给子代
+- mutate
+  变异
+  变异过程：根据变异概率，随机交换路径中的两个城市顺序
+
+- evolve_poplulation:
+  完成一次迭代（进化）
+  过程：从初始代中选取最好的路径作为父代，依次进行 交换信息，概率条件下的变异，生成新的 *总体*
+
+每次新的总体都是 随机选出的样本中，最好的路径，每次交换信息时，都从最好的路径中得到部分好的路径信息，迭代多次后就能得到较好的路径
