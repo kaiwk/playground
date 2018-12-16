@@ -1,9 +1,8 @@
-N = 3
-
-# 0,1,2,3
-# A, B, C, A -> C
-
 def hanoi(N):
+    """
+    0,1,2,3
+    A, B, C, A -> C
+    """
     count = 0
     init = [i for i in range(1,N+1)] # [1,2]
 
@@ -26,9 +25,24 @@ def hanoi(N):
         elif ((c and not b) or (c and b and c[0] < b[0])) and [a, [c[0]]+b, c[1:]] not in hist:
             state = [a, [c[0]]+b, c[1:]]
             hist.append(state)
-
         count += 1
 
     return count
 
-print(hanoi(3))
+
+N = int(input())
+print(hanoi(N))
+
+# solution 2
+
+N = int(input())
+
+def hano(n):
+    if n == 1:
+        return 2
+    elif n == 2:
+        return 8
+    else:
+        return 3*hano(n-1) + 2
+
+print(hanoi(N))
