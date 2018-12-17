@@ -43,3 +43,4 @@ build/
 TAGS
 .tern*
 .ropeproject/
+input.txt

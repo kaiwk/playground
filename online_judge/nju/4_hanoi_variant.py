@@ -1,10 +1,10 @@
-def hanoi(N):
+def hanoi(n):
     """
     0,1,2,3
     A, B, C, A -> C
     """
     count = 0
-    init = [i for i in range(1,N+1)] # [1,2]
+    init = [i for i in range(1, n+1)] # [1,2]
 
     hist = [[init, [], []]]
 
@@ -37,12 +37,11 @@ print(hanoi(N))
 
 N = int(input())
 
-def hano(n):
+def hanoi2(n):
     if n == 1:
         return 2
-    elif n == 2:
+    if n == 2:
         return 8
-    else:
-        return 3*hano(n-1) + 2
+    return 3*hanoi2(n-1) + 2
 
-print(hanoi(N))
+print(hanoi2(N))
