@@ -1,9 +1,9 @@
-f = open('input.txt')
-s1 = f.readline().strip()
-s2 = f.readline().strip()
+# f = open('input.txt')
+# s1 = f.readline().strip()
+# s2 = f.readline().strip()
 
-# s1 = input()
-# s2 = input()
+s1 = input()
+s2 = input()
 n1 = len(s1)
 n2 = len(s2)
 dp = [[0] * (n2+1) for _ in range(n1+1)]
@@ -43,7 +43,7 @@ def trace_back(i, j, s):
         res.append(s[::-1])
 
 
-trace_back(n1-1, n2-1, '')
+trace_back(n1, n2, '')
 
 for i in res:
     print(i)

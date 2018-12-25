@@ -44,3 +44,5 @@ TAGS
 .tern*
 .ropeproject/
 input.txt
+
+.dir-locals.el
