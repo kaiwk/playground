@@ -1,39 +1,63 @@
-# f = open('input.txt')
-# t = int(f.readline())
-
-# t = int(input())
-
-
-# def count_divisors(num):
-#     cnt = 0
-#     sqrt = int(num ** 0.5)
-#     for x in range(1, sqrt + 1):
-#         if num % x == 0:
-#             cnt += 1
-#     if sqrt ** 2 == num:
-#         return cnt * 2 - 1
-#     return cnt * 2
-
-
-def count_divisors(n):
+def count_divisors(num):
     cnt = 0
-    sqrt = int(n ** 0.5)
-    for i in range(1, sqrt+1):
-        if n % i == 0:
-            if n // i == i:
+    sqrt = int(num ** 0.5)
+    for x in range(1, sqrt + 1):
+        if num % x == 0:
+            cnt += 1
+    if sqrt ** 2 == num:
+        return cnt * 2 - 1
+    return cnt * 2
+
+
+def is_prime(num):
+    if count_divisors(num) == 2:
+        return True
+    return False
+
+
+def calPrime(n):
+    primes = []
+    n += 1
+    mask = [0] * n
+    max_val = int(n ** .5) + 1
+
+    for i in range(3, n, 2):
+        if not mask[i]:
+            primes.append(i)
+
+            if i < max_val:
+                for j in range(i * i, n, i):
+                    mask[j] = 1
+    if n >= 2:
+        primes.insert(0, 2)
+    return primes
+
+
+def solve():
+    prime_list = calPrime(1000000)
+    n = len(prime_list)
+    t = int(input())
+
+    for _ in range(t):
+        N = int(input())
+        cnt = 0
+        for i in range(n):
+            a = prime_list[i]
+            for j in range(i+1, n):
+                b = prime_list[j]
+                if (a ** 2) * (b ** 2) < N:
+                    cnt += 1
+                else:
+                    break
+            if a ** 4 >= N:
+                break
+
+        for i in prime_list:
+            if i ** 8 < N:
                 cnt += 1
             else:
-                cnt += 2
-    return cnt
+                break
 
-# for _ in range(t):
-#     # n = int(f.readline())
-#     n = int(input())
-#     cnt = 0
-#     prime_list = get_prime_count(int(n ** 0.5))
-#     prime_n = len(prime_list)
-#     for i in range(prime_n):
-#         for j in range(i+1, prime_n):
-#             if (prime_list[i] ** 2) * (prime_list[j] ** 2) < n:
-#                 cnt += 1
-#     print(cnt)
+        print(cnt)
+
+solve()

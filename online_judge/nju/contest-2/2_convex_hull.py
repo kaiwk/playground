@@ -34,7 +34,7 @@ def solve(pos, n):
         print(res[0][0], res[0][1], end='')
 
     for i in range(1, len(res)):
-        print(', ', res[i][0], res[i][1], end='')
+        print(',', res[i][0], res[i][1], end='')
     print()
 
 
