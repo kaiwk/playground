@@ -7,9 +7,9 @@ def count_sort(arr, n):
 
     k = 0
     for i in range(m+1):
-       for j in range(c[i]):
-           arr[k] = i
-           k += 1
+        for j in range(c[i]):
+            arr[k] = i
+            k += 1
 
 
 def print_arr(arr, n):
