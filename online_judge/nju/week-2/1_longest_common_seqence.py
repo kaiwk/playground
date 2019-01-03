@@ -37,7 +37,7 @@ def trace_back(i, j, s):
             else:
                 trace_back(i-1, j, s)
                 trace_back(i, j-1, s)
-                return
+                break
 
     if len(s) == max_len and s[::-1] not in res:
         res.append(s[::-1])
