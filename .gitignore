@@ -45,4 +45,6 @@ TAGS
 .ropeproject/
 input.txt
 
+target/
+
 .dir-locals.el
